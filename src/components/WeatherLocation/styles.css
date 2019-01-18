@@ -1,4 +1,4 @@
-.weatherLocation {
+.weatherLocationCont {
     width: calc(100% - 20px);
     margin-left: 10px;
     margin-right: 10px;
@@ -7,6 +7,8 @@
     padding: 25px;
     font-family: 'Roboto', sans-serif;
     box-shadow: 10px 10px 40px -12px rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+
 }
 
 .locationCont {
