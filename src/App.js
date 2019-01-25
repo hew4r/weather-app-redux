@@ -4,69 +4,54 @@ import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import LocationList from "./components/LocationList";
 import './App.css';
-import ForecastExtended from "./components/ForecastExtended";
+import ForecastExtendedContainer from "./containers/ForecastExtendedContainer";
+import LocationListContainer from './containers/LocationListContainer';
+
+
 
 const cities = [
-  'Buenos Aires,ar',
-  'Washington,us',
-  'Bogota,col',
-  'Ciudad de México,mx',
-  'Madrid,es',
-  'Lima,pe',
+    'Buenos Aires,ar',
+    'Washington,us',
+    'Bogota,col',
+    'Ciudad de México,mx',
+    'Madrid,es',
+    'Lima,pe',
 ];
 
 class App extends Component {
-  
-  constructor(){
-    super();
-    this.state = { city: null, }
-  }
-  
-  handleSelectedLocation = city => {
-    console.log(`handleSelectedLocation ${city}`);
-    this.setState({ city })
-    
-  }
-  
-  render() {
-    
-    const { city } = this.state;
-    console.log(`render ${city}`);
-    return (
-      <Grid>
-        <Row>
-          <AppBar position="sticky">
-            <Toolbar>
-              <Typography variant='title' color='inherit'>
-                Weather App
-              </Typography>
-            </Toolbar>
-          </AppBar>
-        </Row>
-        <Row>
-          <Col xs={12} sm={6}>
-  
-            <LocationList
-              cities={cities}
-              onSelectedLocation={this.handleSelectedLocation}
-            />
-            
-          </Col>
-          <Col xs={12} sm={6}>
-            <Paper elevation={4}>
-              <div className="detail">
-                {
-                  city && <ForecastExtended city={city}/>
-                }
-                  </div>
-            </Paper>
-          </Col>
-        </Row>
-      </Grid>
-    );
-  }
+
+    render() {
+
+        return (
+            <Grid>
+                <Row>
+                    <AppBar position="sticky">
+                        <Toolbar>
+                            <Typography variant='title' color='inherit'>
+                                Weather App
+                            </Typography>
+                        </Toolbar>
+                    </AppBar>
+                </Row>
+                <Row>
+                    <Col xs={12} sm={6}>
+                        <LocationListContainer
+                            cities={cities}
+                        />
+
+                    </Col>
+                    <Col xs={12} sm={6}>
+                        <Paper elevation={4}>
+                            <div className="detail">
+                                <ForecastExtendedContainer city={city}/>
+                            </div>
+                        </Paper>
+                    </Col>
+                </Row>
+            </Grid>
+        );
+    }
 }
 
 export default App;
